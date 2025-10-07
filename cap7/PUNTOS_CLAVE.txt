@@ -1,0 +1,260 @@
+================================================================================
+    CAPÍTULO 7: PROGRAMACIÓN ORIENTADA A OBJETOS (POO) - PUNTOS CLAVE
+================================================================================
+
+📘 TEMA PRINCIPAL: Introducción a la Programación Orientada a Objetos en C++
+
+================================================================================
+🎯 CONCEPTOS FUNDAMENTALES
+================================================================================
+
+1. PARADIGMA DE POO
+   ✓ Cambio de enfoque: de funciones a objetos
+   ✓ Los datos y las funciones se agrupan en una sola entidad (clase)
+   ✓ Mayor organización y reutilización de código
+   ✓ Modela mejor la realidad (objetos del mundo real)
+
+2. CLASE vs ESTRUCTURA
+   ✓ Struct: miembros públicos por defecto
+   ✓ Class: miembros privados por defecto
+   ✓ Ambos pueden tener métodos y datos
+   ✓ Clase permite mejor encapsulamiento
+
+3. OBJETO
+   ✓ Instancia concreta de una clase
+   ✓ Ocupa memoria y tiene valores específicos
+   ✓ Cada objeto tiene su propio estado
+   ✓ Se declara como: NombreClase objeto;
+
+================================================================================
+🔒 ENCAPSULAMIENTO
+================================================================================
+
+1. MODIFICADORES DE ACCESO
+   
+   PRIVATE:
+   ✓ Solo accesible dentro de la clase
+   ✓ Protege los datos de modificaciones externas
+   ✓ Es el nivel por defecto en class
+   
+   PUBLIC:
+   ✓ Accesible desde cualquier parte del programa
+   ✓ Se usa para métodos de interfaz
+   ✓ Permite la interacción con el objeto
+   
+   PROTECTED:
+   ✓ Accesible en la clase y sus derivadas
+   ✓ Útil para herencia (Cap. 9)
+
+2. VENTAJAS DEL ENCAPSULAMIENTO
+   ✓ Protección de datos sensibles
+   ✓ Control sobre cómo se modifican los datos
+   ✓ Validación de valores
+   ✓ Facilita el mantenimiento del código
+
+================================================================================
+🔧 MÉTODOS SETTER Y GETTER
+================================================================================
+
+1. MÉTODOS SETTER (setXXX)
+   ✓ Permiten modificar atributos privados
+   ✓ Pueden validar datos antes de asignarlos
+   ✓ Formato: void setNombre(tipo valor)
+   ✓ Ejemplo: void setEdad(int e) { if(e>0) edad=e; }
+
+2. MÉTODOS GETTER (getXXX)
+   ✓ Permiten leer atributos privados
+   ✓ No modifican el estado del objeto
+   ✓ Formato: tipo getNombre()
+   ✓ Ejemplo: int getEdad() { return edad; }
+
+3. BUENAS PRÁCTICAS
+   ✓ Validar datos en los setters
+   ✓ Los getters deben ser const cuando sea posible
+   ✓ No exponer referencias a datos privados
+   ✓ Usar nombres descriptivos
+
+================================================================================
+🏗️ CONSTRUCTORES
+================================================================================
+
+1. ¿QUÉ ES UN CONSTRUCTOR?
+   ✓ Método especial que se ejecuta al crear un objeto
+   ✓ Mismo nombre que la clase
+   ✓ No tiene tipo de retorno (ni void)
+   ✓ Inicializa los atributos del objeto
+
+2. TIPOS DE CONSTRUCTORES
+
+   a) CONSTRUCTOR POR DEFECTO
+      ✓ Sin parámetros o con parámetros por defecto
+      ✓ Se genera automáticamente si no defines ninguno
+      ✓ Ejemplo: Circulo() { radio = 0; }
+   
+   b) CONSTRUCTOR CON PARÁMETROS
+      ✓ Recibe valores para inicializar
+      ✓ Más flexible y útil
+      ✓ Ejemplo: Circulo(double r) { radio = r; }
+   
+   c) CONSTRUCTOR COPIA
+      ✓ Crea un objeto como copia de otro
+      ✓ Ejemplo: Circulo(const Circulo &c) { radio = c.radio; }
+
+3. LISTA DE INICIALIZACIÓN
+   ✓ Forma eficiente de inicializar atributos
+   ✓ Sintaxis: Constructor() : atributo(valor) { }
+   ✓ Se ejecuta ANTES del cuerpo del constructor
+   ✓ Ejemplo: Circulo(double r) : radio(r) { }
+
+4. REGLAS IMPORTANTES
+   ✓ Si defines un constructor, el por defecto desaparece
+   ✓ Puedes tener múltiples constructores (sobrecarga)
+   ✓ Se llama automáticamente al crear el objeto
+   ✓ No se puede llamar explícitamente después
+
+================================================================================
+💥 DESTRUCTORES
+================================================================================
+
+1. ¿QUÉ ES UN DESTRUCTOR?
+   ✓ Método especial que se ejecuta al destruir un objeto
+   ✓ Nombre: ~NombreClase()
+   ✓ No tiene parámetros ni tipo de retorno
+   ✓ Se llama automáticamente
+
+2. ¿CUÁNDO SE USA?
+   ✓ Liberar memoria dinámica (delete)
+   ✓ Cerrar archivos abiertos
+   ✓ Liberar recursos (conexiones, sockets, etc.)
+   ✓ Limpiar antes de que el objeto deje de existir
+
+3. CARACTERÍSTICAS
+   ✓ Solo puede haber UNO por clase
+   ✓ No se puede sobrecargar
+   ✓ Se ejecuta al final del scope { }
+   ✓ Ejemplo: ~Circulo() { cout << "Objeto destruido"; }
+
+================================================================================
+📦 ÁMBITO Y VIDA DE LOS OBJETOS
+================================================================================
+
+1. OBJETOS LOCALES
+   ✓ Declarados dentro de una función o bloque { }
+   ✓ Se crean al entrar al bloque
+   ✓ Se destruyen al salir del bloque
+   ✓ Uso de memoria en el stack
+
+2. OBJETOS GLOBALES
+   ✓ Declarados fuera de cualquier función
+   ✓ Se crean al iniciar el programa
+   ✓ Se destruyen al terminar el programa
+   ✓ Accesibles desde cualquier función
+
+3. OBJETOS DINÁMICOS
+   ✓ Creados con "new"
+   ✓ Deben liberarse con "delete"
+   ✓ Uso de memoria en el heap
+   ✓ Mayor control pero más responsabilidad
+
+================================================================================
+📂 SEPARACIÓN DE ARCHIVOS
+================================================================================
+
+1. ARCHIVO DE CABECERA (.h o .hpp)
+   ✓ Contiene la DECLARACIÓN de la clase
+   ✓ Define la estructura y métodos
+   ✓ Se incluye con #include "nombre.h"
+   ✓ Usa guardas de inclusión: #ifndef, #define, #endif
+
+2. ARCHIVO DE IMPLEMENTACIÓN (.cpp)
+   ✓ Contiene la DEFINICIÓN de los métodos
+   ✓ Implementa la lógica de cada método
+   ✓ Usa el operador de alcance ::
+   ✓ Ejemplo: void Clase::metodo() { ... }
+
+3. ARCHIVO PRINCIPAL (main.cpp)
+   ✓ Contiene la función main()
+   ✓ Incluye el archivo de cabecera
+   ✓ Usa las clases definidas
+   ✓ Punto de entrada del programa
+
+4. VENTAJAS DE LA SEPARACIÓN
+   ✓ Mejor organización del código
+   ✓ Facilita la reutilización
+   ✓ Compilación independiente
+   ✓ Oculta detalles de implementación
+
+================================================================================
+🎓 MEJORES PRÁCTICAS
+================================================================================
+
+1. DISEÑO DE CLASES
+   ✓ Una clase = una responsabilidad
+   ✓ Atributos privados, métodos públicos
+   ✓ Usar nombres descriptivos
+   ✓ Validar datos en setters
+
+2. CONSTRUCTORES
+   ✓ Siempre definir al menos el constructor por defecto
+   ✓ Inicializar TODOS los atributos
+   ✓ Usar lista de inicialización cuando sea posible
+   ✓ Validar parámetros recibidos
+
+3. DESTRUCTORES
+   ✓ Liberar TODA la memoria dinámica
+   ✓ Cerrar TODOS los recursos abiertos
+   ✓ No lanzar excepciones desde el destructor
+   ✓ Mantenerlo simple y rápido
+
+4. MÉTODOS
+   ✓ Métodos que no modifican: marcarlos como const
+   ✓ Usar referencias para parámetros grandes
+   ✓ Evitar efectos secundarios inesperados
+   ✓ Documentar con comentarios claros
+
+================================================================================
+❌ ERRORES COMUNES
+================================================================================
+
+1. Olvidar inicializar atributos en el constructor
+2. No liberar memoria dinámica en el destructor
+3. Hacer públicos todos los atributos (rompe encapsulamiento)
+4. No validar datos en los setters
+5. Olvidar las guardas de inclusión en archivos .h
+6. Confundir declaración (en .h) con definición (en .cpp)
+7. No usar const en getters
+8. Crear objetos dinámicos y olvidar hacer delete
+
+================================================================================
+💡 EJEMPLOS DE ARCHIVOS EN ESTE CAPÍTULO
+================================================================================
+
+01-03: Persona (struct → class → ámbito)
+04-07: Círculo (setget → básico → constructores → completo)
+08-10: Alumno (struct → gestión → completo)
+11-13: Time (proyecto multi-archivo: .h + .cpp + main)
+14-18: Ejercicios (Rectángulo, Triángulo, Punto3D, Complejo, Calculadora)
+
+================================================================================
+🔗 CONCEPTOS QUE SE VERÁN DESPUÉS
+================================================================================
+
+Capítulo 8: Sobrecarga de Operadores
+Capítulo 9: Herencia y Polimorfismo
+Capítulo 10: Plantillas y Genéricos
+Capítulo 11: Manejo de Excepciones
+
+================================================================================
+📝 RESUMEN EJECUTIVO
+================================================================================
+
+✓ La POO organiza el código en objetos (datos + métodos)
+✓ El encapsulamiento protege los datos con private/public
+✓ Los constructores inicializan objetos automáticamente
+✓ Los destructores limpian recursos antes de destruir el objeto
+✓ Separar código en .h/.cpp mejora la organización
+✓ Setters/Getters controlan el acceso a atributos privados
+
+================================================================================
+FIN DEL DOCUMENTO
+================================================================================

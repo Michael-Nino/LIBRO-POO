@@ -1,0 +1,344 @@
+================================================================================
+   CAPÍTULO 8: SOBRECARGA DE OPERADORES - PUNTOS CLAVE
+================================================================================
+
+📘 TEMA PRINCIPAL: Sobrecarga de Operadores en C++
+
+================================================================================
+🎯 CONCEPTOS FUNDAMENTALES
+================================================================================
+
+1. ¿QUÉ ES LA SOBRECARGA DE OPERADORES?
+   ✓ Permite usar operadores (+, -, *, /, ==, etc.) con objetos de clases
+   ✓ Da significado a los operadores para tipos definidos por el usuario
+   ✓ Hace el código más natural e intuitivo
+   ✓ Ejemplo: complejo1 + complejo2 en lugar de complejo1.sumar(complejo2)
+
+2. VENTAJAS
+   ✓ Código más legible y expresivo
+   ✓ Sintaxis natural similar a tipos primitivos
+   ✓ Facilita operaciones matemáticas con objetos
+   ✓ Hace que las clases se comporten como tipos built-in
+
+3. LIMITACIONES
+   ✓ No se pueden crear nuevos operadores
+   ✓ No se puede cambiar la precedencia de operadores
+   ✓ No se puede cambiar el número de operandos
+   ✓ Algunos operadores no se pueden sobrecargar (::, ., .*, ?:, sizeof)
+
+================================================================================
+🔧 SINTAXIS BÁSICA
+================================================================================
+
+1. SOBRECARGA COMO MÉTODO MIEMBRO
+
+   Formato:
+   TipoRetorno operator@(parametros)
+   
+   Ejemplo:
+   Complejo operator+(const Complejo &c)
+   {
+       Complejo temp;
+       temp.real = real + c.real;
+       temp.imag = imag + c.imag;
+       return temp;
+   }
+   
+   Uso: c3 = c1 + c2;  // Equivale a: c3 = c1.operator+(c2);
+
+2. SOBRECARGA COMO FUNCIÓN FRIEND
+
+   Formato:
+   friend TipoRetorno operator@(parametros)
+   
+   Ejemplo:
+   friend Complejo operator+(const Complejo &a, const Complejo &b)
+   {
+       return Complejo(a.real + b.real, a.imag + b.imag);
+   }
+   
+   Ventaja: Permite conversiones implícitas en ambos operandos
+
+================================================================================
+➕ OPERADORES ARITMÉTICOS
+================================================================================
+
+1. OPERADORES BINARIOS: +, -, *, /
+   
+   Como MIEMBRO:
+   ✓ Sintaxis: Tipo operator+(const Tipo &otro)
+   ✓ El primer operando es el objeto actual (this)
+   ✓ El segundo operando es el parámetro
+   
+   Como FRIEND:
+   ✓ Sintaxis: friend Tipo operator+(const Tipo &a, const Tipo &b)
+   ✓ Ambos operandos son parámetros
+   ✓ Mejor para conversiones implícitas
+
+2. OPERADORES UNARIOS: +, -, ++, --
+   
+   PREFIJO (++x):
+   ✓ Sintaxis: Tipo& operator++()
+   ✓ Incrementa y devuelve referencia
+   ✓ Retorna: *this
+   
+   POSTFIJO (x++):
+   ✓ Sintaxis: Tipo operator++(int)
+   ✓ Guarda valor, incrementa, devuelve valor guardado
+   ✓ El parámetro 'int' es solo para diferenciar
+   ✓ Menos eficiente que el prefijo
+
+================================================================================
+🔍 OPERADORES DE COMPARACIÓN
+================================================================================
+
+1. IGUALDAD Y DESIGUALDAD: ==, !=
+   
+   Ejemplo:
+   bool operator==(const Tipo &otro) const
+   {
+       return (dato1 == otro.dato1 && dato2 == otro.dato2);
+   }
+   
+   bool operator!=(const Tipo &otro) const
+   {
+       return !(*this == otro);  // Reutiliza operator==
+   }
+
+2. RELACIONALES: <, >, <=, >=
+   
+   Ejemplo:
+   bool operator<(const Tipo &otro) const
+   {
+       return (valor < otro.valor);
+   }
+   
+   Consejo: Implementar < y ==, los demás se derivan
+
+================================================================================
+🔄 OPERADORES DE ASIGNACIÓN
+================================================================================
+
+1. OPERADOR DE ASIGNACIÓN SIMPLE: =
+   
+   Formato:
+   Tipo& operator=(const Tipo &otro)
+   {
+       if(this != &otro)  // Evitar auto-asignación
+       {
+           // Copiar datos
+           dato = otro.dato;
+       }
+       return *this;  // Permite: a = b = c
+   }
+   
+   IMPORTANTE:
+   ✓ Verificar auto-asignación (x = x)
+   ✓ Devolver *this para permitir asignaciones en cadena
+   ✓ Si hay memoria dinámica, liberar la antigua primero
+
+2. OPERADORES DE ASIGNACIÓN COMPUESTA: +=, -=, *=, /=
+   
+   Ejemplo:
+   Tipo& operator+=(const Tipo &otro)
+   {
+       dato += otro.dato;
+       return *this;
+   }
+   
+   Ventaja: Más eficiente que: x = x + y
+
+================================================================================
+📥📤 OPERADORES DE ENTRADA/SALIDA
+================================================================================
+
+1. OPERADOR DE SALIDA: <<
+   
+   SIEMPRE como función FRIEND:
+   
+   friend ostream& operator<<(ostream &os, const Tipo &obj)
+   {
+       os << "Dato: " << obj.dato;
+       return os;  // Permite: cout << obj1 << obj2
+   }
+   
+   Uso: cout << miObjeto << endl;
+
+2. OPERADOR DE ENTRADA: >>
+   
+   friend istream& operator>>(istream &is, Tipo &obj)
+   {
+       is >> obj.dato;
+       return is;  // Permite: cin >> obj1 >> obj2
+   }
+   
+   Uso: cin >> miObjeto;
+   
+   IMPORTANTE:
+   ✓ DEBE ser función friend (no puede ser miembro)
+   ✓ El objeto NO debe ser const en operator>>
+   ✓ Devolver la referencia al stream para encadenar
+
+================================================================================
+📑 OPERADOR DE ÍNDICE: []
+================================================================================
+
+1. ACCESO POR ÍNDICE
+
+   Para lectura:
+   Tipo operator[](int indice) const
+   {
+       return datos[indice];
+   }
+   
+   Para escritura:
+   Tipo& operator[](int indice)
+   {
+       return datos[indice];  // Devuelve referencia
+   }
+   
+   Uso: obj[0] = 10;  // Escritura
+        x = obj[0];   // Lectura
+
+2. VALIDACIÓN
+   ✓ Verificar límites del arreglo
+   ✓ Lanzar excepción si índice inválido
+   ✓ Considerar usar at() en lugar de []
+
+================================================================================
+💡 FUNCIONES FRIEND
+================================================================================
+
+1. ¿QUÉ ES UNA FUNCIÓN FRIEND?
+   ✓ No es miembro de la clase
+   ✓ Tiene acceso a miembros privados
+   ✓ Se declara dentro de la clase con 'friend'
+   ✓ Se define fuera como función normal (sin ::)
+
+2. CUÁNDO USAR FRIEND
+   ✓ Operadores de entrada/salida (<<, >>)
+   ✓ Cuando se necesita simetría en operadores binarios
+   ✓ Para permitir conversiones implícitas en ambos operandos
+   ✓ Cuando el primer operando no es un objeto de la clase
+
+3. VENTAJAS Y DESVENTAJAS
+   
+   Ventajas:
+   ✓ Flexibilidad en la sobrecarga
+   ✓ Permite notación natural
+   ✓ Conversiones automáticas en ambos lados
+   
+   Desventajas:
+   ✓ Rompe el encapsulamiento (tiene acceso a private)
+   ✓ No es miembro, no tiene this
+   ✓ Debe redeclararse en clases derivadas
+
+================================================================================
+📊 EJEMPLOS PRÁCTICOS EN ESTE CAPÍTULO
+================================================================================
+
+1. CLASE COMPLEJO (Archivos 01-05, 09-10)
+   ✓ Operadores aritméticos: +, -, *, /
+   ✓ Operadores de entrada/salida: <<, >>
+   ✓ Comparación de diferentes enfoques (miembro vs friend)
+
+2. CLASE ENTERO (Archivos 06)
+   ✓ Operadores de incremento/decremento: ++, --
+   ✓ Prefijo y postfijo
+   ✓ Operadores relacionales: <, >, ==, !=
+
+3. CLASE RACIONAL (Archivos 07)
+   ✓ Representación de números racionales (a/b)
+   ✓ Operadores aritméticos con simplificación
+   ✓ Conversión a formato de salida adecuado
+
+4. CLASE ARREGLO (Archivos 08)
+   ✓ Operador de índice: []
+   ✓ Operador de asignación: =
+   ✓ Operadores de entrada/salida
+
+5. EJERCICIOS PROPUESTOS
+   ✓ Ascensor: Operadores ++ y -- para subir/bajar pisos
+   ✓ Polinomio: Operaciones con polinomios
+   ✓ Matriz: Operaciones matriciales
+   ✓ Caja: Comparación de volúmenes
+
+================================================================================
+✅ MEJORES PRÁCTICAS
+================================================================================
+
+1. DISEÑO
+   ✓ Solo sobrecargar operadores con significado intuitivo
+   ✓ Mantener la semántica natural del operador
+   ✓ Si sobrecargas ==, también sobrecarga !=
+   ✓ Si sobrecargas <, considera sobrecargar >, <=, >=
+
+2. EFICIENCIA
+   ✓ Usar referencias const para parámetros grandes
+   ✓ Devolver por valor cuando sea necesario (evitar referencias colgantes)
+   ✓ Preferir operadores compuestos (+=) sobre (+ seguido de =)
+   ✓ Usar lista de inicialización en constructores
+
+3. CONSISTENCIA
+   ✓ Operadores relacionados deben ser consistentes
+   ✓ a + b debe dar el mismo resultado que b + a (si es conmutativo)
+   ✓ (a + b) + c debe ser igual que a + (b + c) (asociatividad)
+
+4. CONST CORRECTNESS
+   ✓ Marcar métodos que no modifican como const
+   ✓ Parámetros que no cambian deben ser const
+   ✓ Operadores de comparación casi siempre son const
+
+================================================================================
+❌ ERRORES COMUNES
+================================================================================
+
+1. No devolver *this en operadores de asignación
+2. Olvidar verificar auto-asignación en operator=
+3. Usar función miembro para << o >> (debe ser friend)
+4. No marcar parámetros como const cuando corresponde
+5. Devolver referencia a objeto local temporal
+6. No considerar la eficiencia (copias innecesarias)
+7. Sobrecargar operadores con comportamiento no intuitivo
+8. Olvidar el parámetro 'int' en operator++(int)
+
+================================================================================
+🔗 TABLA DE OPERADORES SOBRECARGABLES
+================================================================================
+
+PUEDEN sobrecargarse:
+✓ Aritméticos: +, -, *, /, %
+✓ Relacionales: <, >, <=, >=, ==, !=
+✓ Lógicos: &&, ||, !
+✓ Incremento/Decremento: ++, --
+✓ Asignación: =, +=, -=, *=, /=, %=
+✓ Entrada/Salida: <<, >>
+✓ Acceso: [], ()
+✓ Puntero: *, ->
+✓ Memoria: new, delete
+✓ Bits: &, |, ^, ~, <<, >>
+
+NO pueden sobrecargarse:
+✗ Resolución de ámbito: ::
+✗ Acceso a miembro: .
+✗ Puntero a miembro: .*
+✗ Condicional ternario: ?:
+✗ Tamaño: sizeof
+✗ Información de tipo: typeid
+
+================================================================================
+📝 RESUMEN EJECUTIVO
+================================================================================
+
+✓ La sobrecarga permite usar operadores estándar con objetos personalizados
+✓ Hace el código más legible y natural
+✓ Puede implementarse como método miembro o función friend
+✓ Los operadores << y >> DEBEN ser funciones friend
+✓ Siempre mantener la semántica natural del operador
+✓ Cuidar la eficiencia y evitar copias innecesarias
+✓ Verificar auto-asignación en operator=
+✓ Usar const correctamente en parámetros y métodos
+
+================================================================================
+FIN DEL DOCUMENTO
+================================================================================
