@@ -66,6 +66,21 @@ g++ -std=c++11 -Wall ejercicios/ejercicio_01.cpp -o ejercicio_01
 
 **24 ejercicios** cubriendo desde funciones básicas hasta recursividad y sobrecarga de funciones.
 
+### 🌟 Ejercicios con Documentación Extendida
+
+Los siguientes ejercicios incluyen comentarios educativos detallados con:
+- Explicaciones matemáticas completas
+- Análisis de complejidad temporal y espacial
+- Ejemplos paso a paso
+- Trazas de ejecución
+- Ejercicios propuestos para el estudiante
+
+**Ejercicios destacados:**
+- **ejercicio_01.cpp**: Números complejos (estructuras, operaciones matemáticas)
+- **ejercicio_14.cpp**: Recursividad (explicación exhaustiva con trazas)
+
+Estos ejercicios sirven como **referencia de estilo** para entender los conceptos en profundidad.
+
 ## 🛠️ Requisitos
 
 - **Compilador**: g++ con soporte C++11 o superior
