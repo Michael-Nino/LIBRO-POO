@@ -1,385 +1,172 @@
-# 📚 Libro POO Básico - Programación Orientada a Objetos en C++
+# 📚 Libro POO - Ejercicios Resueltos
 
-<div align="center">
+Repositorio con ejercicios completos del libro **"Algoritmos y Programación práctica con C++"** de Edgar Ruiz Lizama.
 
-![C++](https://img.shields.io/badge/C++-11-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
-![License](https://img.shields.io/badge/License-Educational-green?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
+## 📂 Estructura del Repositorio
 
-**Material educativo completo para aprender Programación Orientada a Objetos con C++**
+```
+libro-poo/
+├── cap4/                          # Cadenas, Punteros y Memoria Dinámica (23 ejercicios)
+├── cap5/                          # Funciones (24 ejercicios)
+├── cap6/                          # Ordenamiento y Búsqueda (2 ejercicios)
+├── cap7/                          # Clases y Objetos
+├── cap8/                          # Sobrecarga de Operadores
+├── cap9/                          # Herencia y Polimorfismo (13 archivos)
+└── README.md                      # Este archivo
+```
 
-[📖 Ver Capítulos](#-contenido) • [🚀 Inicio Rápido](#-inicio-rápido) • [💻 Compilación](#-compilación) • [🤝 Contribuir](#-contribuciones)
+## 📖 Capítulos Disponibles
 
-</div>
+### ✅ Capítulo 4: Cadenas, Punteros y Asignación Dinámica
+- **23 ejercicios completos**
+- Manipulación de cadenas (char arrays)
+- Uso de punteros y aritmética
+- Gestión de memoria dinámica (new/delete)
+- [Ver detalles →](cap4/README.md)
 
----
+### ✅ Capítulo 5: Funciones
+- **24 ejercicios completos**
+- Funciones básicas y avanzadas
+- Paso por valor y referencia
+- Sobrecarga y recursividad
+- [Ver detalles →](cap5/README.md)
 
-## 📋 Descripción
+### ✅ Capítulo 6: Ordenamiento y Búsqueda
+- **2 ejercicios completos**
+- Algoritmos de ordenamiento (Bubble, Selection, Insertion, Quick, Merge)
+- Algoritmos de búsqueda (Lineal, Binaria)
+- [Ver detalles →](cap6/README.md)
 
-Este repositorio contiene material educativo estructurado para aprender **Programación Orientada a Objetos (POO)** usando C++. Incluye ejemplos prácticos, ejercicios resueltos y proyectos completos que cubren desde conceptos básicos hasta técnicas avanzadas.
+### ✅ Capítulo 7: Clases y Objetos
+- Estructuras vs Clases
+- Constructores y destructores
+- Encapsulamiento (get/set)
+- Separación header/implementación
+- [Ver detalles →](cap7/README.md)
 
-### ✨ Características
+### ✅ Capítulo 8: Sobrecarga de Operadores
+- Operadores aritméticos
+- Operadores de comparación
+- Operadores de E/S (<<, >>)
+- Operadores como funciones miembro y amigas
+- [Ver detalles →](cap8/README.md)
 
-- ✅ **+50 programas** de ejemplo completamente documentados
-- ✅ **Comentarios educativos** detallados en cada archivo
-- ✅ **Scripts de compilación** automáticos para cada capítulo
-- ✅ **Proyectos multi-archivo** con estructura profesional
-- ✅ **Ejercicios propuestos** con soluciones completas
-- ✅ Compilable con **C++11** estándar
-- ✅ Compatible con **Linux**, **Windows** y **macOS**
-
----
-
-## 📚 Contenido
-
-### [Capítulo 7: Clases y Objetos Básicos](cap7/README.md) 🔰
-
-Fundamentos de POO en C++: clases, objetos, constructores, destructores y encapsulamiento.
-
-**Temas cubiertos:**
-- 📦 Diferencia entre `struct` y `class`
-- 🔒 Encapsulamiento y modificadores de acceso
-- 🏗️ Constructores (por defecto, parametrizado, de copia)
-- 💥 Destructores y ciclo de vida de objetos
-- 📂 Organización en archivos `.h` y `.cpp`
-- 🗃️ Gestión de arrays de objetos
-
-**Proyectos destacados:**
-- `Time`: Sistema de hora con múltiples archivos
-- `Alumno`: Sistema CRUD completo con búsqueda
-- Ejercicios: Rectángulo, Triángulo, Punto3D, Calculadora
-
-**📊 Estadísticas:** 19 archivos | 1500+ líneas de código
-
-[📖 Ver documentación completa →](cap7/README.md)
-
----
-
-### [Capítulo 8: Sobrecarga de Operadores](cap8/README.md) ⚡
-
-Técnicas avanzadas: sobrecarga de operadores para crear tipos de datos intuitivos.
-
-**Temas cubiertos:**
-- ➕ Operadores aritméticos (+, -, *, /, %)
-- ⚖️ Operadores relacionales (==, !=, <, >, <=, >=)
-- 🔄 Operadores unarios (++, --, -, !)
-- 📤 Operadores de flujo (<<, >>)
-- 🎯 Decisión: funciones miembro vs friend
-- 💾 Gestión de memoria dinámica
-- 📦 TADs completos (Tipos Abstractos de Datos)
-
-**Proyectos destacados:**
-- `Complejo`: Números complejos (5 versiones evolutivas)
-- `Racional`: Fracciones con simplificación automática
-- `Arreglo`: Array dinámico con gestión de memoria
-- Ejercicios: Matriz, Polinomio, Ascensor, Caja
-
-**📊 Estadísticas:** 20 archivos | 2500+ líneas de código
-
-[📖 Ver documentación completa →](cap8/README.md)
-
----
+### ✅ Capítulo 9: Herencia y Polimorfismo
+- **13 archivos (ejemplos y ejercicios)**
+- Herencia simple y múltiple
+- Polimorfismo y funciones virtuales
+- Clases abstractas
+- [Ver detalles →](cap9/README.md)
 
 ## 🚀 Inicio Rápido
 
-### Prerrequisitos
-
-```bash
-# Linux/Ubuntu
-sudo apt install g++ make
-
-# macOS
-xcode-select --install
-
-# Windows (MinGW)
-# Descargar desde: https://www.mingw-w64.org/
-```
-
-**Versión mínima:** g++ 7.0 o superior (con soporte C++11)
-
-### Clonar el Repositorio
-
+### Clonar el repositorio
 ```bash
 git clone https://github.com/Michael-Nino/LIBRO-POO.git
 cd LIBRO-POO
 ```
 
-### Estructura del Proyecto
-
-```
-LIBRO-POO/
-├── README.md                    # Este archivo
-├── .gitignore                   # Archivos ignorados por git
-│
-├── cap7/                        # Capítulo 7: Clases y Objetos
-│   ├── README.md               # Documentación del capítulo
-│   ├── PUNTOS_CLAVE.txt        # Resumen de conceptos
-│   ├── compilar_todos.sh       # Script de compilación automática
-│   ├── 01_persona_estructura.cpp
-│   ├── 02_persona_clase.cpp
-│   ├── ...
-│   └── 18_ejercicio_calculadora.cpp
-│
-└── cap8/                        # Capítulo 8: Sobrecarga de Operadores
-    ├── README.md               # Documentación del capítulo
-    ├── PUNTOS_CLAVE.txt        # Resumen de conceptos
-    ├── compilar_todos.sh       # Script de compilación automática
-    ├── 01_Complejo_Operator_1.cpp
-    ├── 06_entero.h             # Proyectos multi-archivo
-    ├── 06_entero.cpp
-    ├── 06_entero_main.cpp
-    └── ...
-```
-
----
-
-## 💻 Compilación
-
-### Opción 1: Script Automático (Recomendado) ⚡
-
-Cada capítulo incluye un script que compila y ejecuta **todos** los programas:
-
+### Compilar un capítulo completo
 ```bash
-# Capítulo 7
-cd cap7
-./compilar_todos.sh
+# Capítulo 4 (23 ejercicios)
+cd cap4
+./compilar_todos.sh build
 
-# Capítulo 8
-cd cap8
-./compilar_todos.sh
+# Capítulo 5 (24 ejercicios)
+cd cap5
+./compilar_todos.sh build
+
+# Capítulo 9 (13 archivos)
+cd cap9
+./compilar_todos.sh build
 ```
 
-**Características del script:**
-- ✅ Compila automáticamente todos los programas
-- ✅ Ejecuta con datos de ejemplo
-- ✅ Muestra resultados con colores
-- ✅ Maneja proyectos multi-archivo
-- ✅ Rellena automáticamente programas interactivos
-
-### Opción 2: Compilación Individual
-
+### Compilar un ejercicio individual
 ```bash
-# Programa de un solo archivo
-g++ -std=c++11 -Wall nombre_archivo.cpp -o programa
-./programa
-
-# Proyecto multi-archivo (ejemplo: Time en cap7)
-g++ -std=c++11 -Wall 12_time_implementacion.cpp 13_time_main.cpp -o time
-./time
-
-# Proyecto multi-archivo (ejemplo: Racional en cap8)
-g++ -std=c++11 -Wall 07_racional.cpp 07_racional_main.cpp -o racional
-./racional
+cd cap4/ejercicios_propuestos
+g++ -std=c++11 -Wall 01_contar_vocal.cpp -o contar_vocal
+./contar_vocal
 ```
 
-### Opción 3: VS Code
+## 🛠️ Requisitos
 
-Si usas **Visual Studio Code**:
+- **Compilador**: g++ con soporte C++11 o superior
+- **Sistema Operativo**: Linux, macOS, Windows (MinGW/WSL)
+- **Make** (opcional): Para algunos capítulos
+- **Git**: Para clonar el repositorio
 
-1. Abre la carpeta del proyecto
-2. Instala la extensión **C/C++** de Microsoft
-3. Presiona `Ctrl+Shift+B` (Linux/Windows) o `Cmd+Shift+B` (macOS)
-4. Selecciona la tarea de compilación
+## 📊 Estadísticas del Proyecto
 
----
+| Capítulo | Ejercicios | Archivos | Líneas de Código |
+|----------|-----------|----------|------------------|
+| Cap 4    | 23        | 23 .cpp  | ~3,200           |
+| Cap 5    | 24        | 24 .cpp  | ~2,800           |
+| Cap 6    | 2         | 2 .cpp   | ~800             |
+| Cap 7    | 18        | 18 .cpp  | ~2,500           |
+| Cap 8    | 14        | 14 .cpp  | ~2,200           |
+| Cap 9    | 13        | 13 archivos | ~1,500        |
+| **Total**| **94**    | **94**   | **~13,000**      |
 
-## 🎓 Filosofía Educativa
+## 📚 Temas Cubiertos
 
-### Comentarios Didácticos
+### Fundamentos
+- ✅ Tipos de datos y variables
+- ✅ Control de flujo (if, switch, for, while)
+- ✅ Arreglos unidimensionales y multidimensionales
+- ✅ Cadenas de caracteres (char arrays)
+- ✅ Punteros y referencias
 
-Todos los archivos incluyen **comentarios educativos extensos** que explican:
+### Programación Estructurada
+- ✅ Funciones y procedimientos
+- ✅ Paso de parámetros (valor/referencia)
+- ✅ Recursividad
+- ✅ Sobrecarga de funciones
 
-- 💡 **Qué hace** el código
-- 🤔 **Por qué** se usa esa técnica
-- 📖 **Conceptos teóricos** aplicados
-- ⚠️ **Errores comunes** a evitar
-- 🎯 **Mejores prácticas**
+### Estructuras de Datos
+- ✅ Algoritmos de ordenamiento
+- ✅ Algoritmos de búsqueda
+- ✅ Memoria dinámica
 
-**Ejemplo:**
+### Programación Orientada a Objetos
+- ✅ Clases y objetos
+- ✅ Constructores y destructores
+- ✅ Encapsulamiento
+- ✅ Herencia (simple y múltiple)
+- ✅ Polimorfismo
+- ✅ Sobrecarga de operadores
+- ✅ Clases abstractas
 
-```cpp
-// Use la IA de su preferencia para quitar todos los comentarios
-/*
- * Constructor de copia:
- * - Se invoca al crear un objeto a partir de otro: Circulo c3(c2);
- * - Copia el valor del radio del objeto 'c' al nuevo objeto
- * - 'const' asegura que no modificamos el objeto original
- * - '&' pasa por referencia (más eficiente que copiar todo)
- */
-Circulo::Circulo(const Circulo& c) {
-    radio = c.radio;  // Copia el radio del objeto 'c'
-}
-```
+## 📖 Fuente
 
-### Progresión de Aprendizaje
+**Libro**: "Algoritmos y Programación práctica con C++"  
+**Autor**: Edgar Ruiz Lizama  
+**Editorial**: Macro  
+**ISBN**: 978-612-304-xxx-x
 
-Los capítulos están diseñados con **progresión incremental**:
+## 👤 Autor del Repositorio
 
-1. **Conceptos básicos** → Ejemplos simples
-2. **Aplicación práctica** → Proyectos pequeños
-3. **Integración** → Proyectos multi-archivo
-4. **Ejercicios** → Práctica autónoma
+**Michael Niño**  
+GitHub: [@Michael-Nino](https://github.com/Michael-Nino)
 
----
+## 📄 Licencia
 
-## 📖 Recursos Adicionales
-
-### Archivos de Referencia
-
-Cada capítulo incluye:
-
-- **`README.md`**: Documentación completa del capítulo
-- **`PUNTOS_CLAVE.txt`**: Resumen rápido de conceptos
-- **`compilar_todos.sh`**: Script de compilación automática
-
-### Libros de Referencia
-
-- 📘 **Algoritmos y Programación Práctica con C++** - Ruiz et al.
-- 📗 **C++ Como Programar** - Deitel & Deitel (4ta Edición)
-
-### Recursos Online
-
-- [cppreference.com](https://en.cppreference.com/) - Referencia completa de C++
-- [learncpp.com](https://www.learncpp.com/) - Tutorial interactivo
-- [cplusplus.com](https://cplusplus.com/) - Documentación y tutoriales
-
----
-
-## 🔧 Herramientas Recomendadas
-
-### IDEs / Editores
-
-- **Visual Studio Code** (recomendado)
-  - Extensión: C/C++ (Microsoft)
-  - Extensión: C/C++ Themes
-  
-- **Code::Blocks** (alternativa)
-- **CLion** (profesional)
-- **Dev-C++** (simple)
-
-### Compiladores
-
-- **g++** (GNU Compiler Collection) - Linux/macOS
-- **MinGW-w64** - Windows
-- **Clang** - Alternativa moderna
-
----
-
-## 💡 Cómo Usar Este Material
-
-### Para Estudiantes
-
-1. **Lee primero** el README.md del capítulo
-2. **Revisa** PUNTOS_CLAVE.txt para conceptos importantes
-3. **Estudia** los ejemplos en orden (01, 02, 03...)
-4. **Compila y ejecuta** cada programa
-5. **Modifica** el código para experimentar
-6. **Resuelve** los ejercicios propuestos
-
-### Para Profesores
-
-- ✅ Material listo para usar en clase
-- ✅ Progresión pedagógica estructurada
-- ✅ Ejercicios con soluciones
-- ✅ Scripts para demostración en vivo
-- ✅ Comentarios que sirven como guía de clase
-
-### Para Autodidactas
-
-- ✅ Explicaciones detalladas en cada archivo
-- ✅ No requiere libro físico (auto-contenido)
-- ✅ Progresión de fácil a avanzado
-- ✅ Ejercicios para practicar
-
----
+Este repositorio contiene ejercicios con fines educativos. El contenido del libro está protegido por derechos de autor.
 
 ## 🤝 Contribuciones
 
-¡Las contribuciones son bienvenidas! Si encuentras:
+Las contribuciones son bienvenidas. Por favor:
+1. Haz un Fork del proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/nueva-caracteristica`)
+3. Commit tus cambios (`git commit -m 'Agregar nueva característica'`)
+4. Push a la rama (`git push origin feature/nueva-caracteristica`)
+5. Abre un Pull Request
 
-- 🐛 **Errores** en el código
-- 📝 **Mejoras** en documentación
-- 💡 **Sugerencias** de ejercicios
-- 🌍 **Traducciones**
+## 📧 Contacto
 
-Por favor:
-
-1. Haz un **fork** del repositorio
-2. Crea una **rama** para tu feature (`git checkout -b feature/mejora`)
-3. **Commit** tus cambios (`git commit -m 'Agrega mejora'`)
-4. **Push** a la rama (`git push origin feature/mejora`)
-5. Abre un **Pull Request**
+Para preguntas o sugerencias, abre un **Issue** en GitHub.
 
 ---
 
-## 📜 Licencia
+⭐ Si este repositorio te fue útil, considera darle una estrella!
 
-Este material es de uso **educativo**. Siéntete libre de:
-
-- ✅ Usar en clases
-- ✅ Compartir con estudiantes
-- ✅ Modificar para tus necesidades
-- ✅ Contribuir mejoras
-
-**Por favor:** Mantén los créditos originales y comparte las mejoras con la comunidad.
-
----
-
-## 👥 Autores
-
-- **Michael Niño** - *Mantenedor principal* - [@Michael-Nino](https://github.com/Michael-Nino)
-
-### Contribuidores
-
-¡Gracias a todos los que han contribuido a este proyecto! 🙌
-
----
-
-## 📞 Contacto
-
-- **GitHub:** [@Michael-Nino](https://github.com/Michael-Nino)
-- **Repositorio:** [LIBRO-POO](https://github.com/Michael-Nino/LIBRO-POO.git)
-- **Issues:** [Reportar problema](https://github.com/Michael-Nino/LIBRO-POO/issues)
-
----
-
-## 🗺️ Roadmap
-
-### ✅ Completado
-- [x] Capítulo 7: Clases y Objetos Básicos
-- [x] Capítulo 8: Sobrecarga de Operadores
-- [x] Comentarios educativos en todos los archivos
-- [x] Scripts de compilación automáticos
-- [x] Documentación completa (README)
-
-### 🚧 En Progreso
-- [ ] Capítulo 9: Herencia y Polimorfismo
-- [ ] Tests unitarios
-- [ ] Integración continua (CI/CD)
-
-### 📅 Futuro
-- [ ] Capítulo 10: Templates
-- [ ] Capítulo 11: STL (Standard Template Library)
-- [ ] Ejercicios interactivos online
-- [ ] Videos explicativos
-
----
-
-## ⭐ ¿Te Gusta Este Proyecto?
-
-Si este material te ha sido útil:
-
-- ⭐ Dale una **estrella** al repositorio
-- 🔄 **Compártelo** con tus compañeros
-- 💬 **Déjanos** tu feedback en Issues
-- 🤝 **Contribuye** con mejoras
-
----
-
-<div align="center">
-
-**📚 Hecho con ❤️ para la comunidad educativa**
-
-[⬆️ Volver arriba](#-libro-poo-básico---programación-orientada-a-objetos-en-c)
-
-</div>
+*Última actualización: Octubre 2025*
